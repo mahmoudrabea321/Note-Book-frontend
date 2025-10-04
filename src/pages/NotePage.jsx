@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ArrowLeft, Trash2Icon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useNavigate, Link, useParams } from 'react-router-dom'; 
+import API from '../config'
 
 const NotePage = () => {
   const [note, setNote] = useState({ title: '', description: '' }); 
@@ -14,7 +15,7 @@ const NotePage = () => {
     const fetchNote = async () => {
       if (!id) return;
       try {
-        const res = await axios.get(`http://localhost:5000/api/notes/${id}`);
+        const res = await axios.get(`${API}/api/notes/${id}`);
         setNote(res.data);
       } catch (err) {
         toast.error('Failed to load note');

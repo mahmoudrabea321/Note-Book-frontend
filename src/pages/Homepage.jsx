@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import Navbar from '../component/Navbar.jsx';
 import axios from 'axios';
 import Card from '../component/Card.jsx';
-
+import API from '../config.js'
 const Homepage = () => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +11,7 @@ const Homepage = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/notes');
+        const res = await axios.get(`${API}/api/notes`);
         setNotes(res.data);
       } catch (error) {
         console.error('Fetch error:', error);
